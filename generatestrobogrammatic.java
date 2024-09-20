@@ -57,6 +57,7 @@ NOTE: Print the results in sorted order to pass the testcases'''
 
 import java.util.*;
 
+
 class Solution {
     
     
@@ -90,7 +91,14 @@ class Solution {
         return result;
     }
 
-    
+    public static Boolean isPrime(int n){
+        for(int i=2;i<Math.sqrt(n);i++){
+            if(n%i==0){
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
@@ -98,5 +106,25 @@ class Solution {
         List<String> l=findStrobogrammatic(n);
         Collections.sort(l);
         System.out.println(l);
+        System.out.println("FIND THE NUMBER OF STOBOGRAMMATIC NUMBERS OF DIGIT N:");
+        System.out.println(l.size());
+        System.out.println("ENTER A NUMBER TO CHECK IF IT IS STROBOGRAMMATC PRIME:\n");
+        int p=sc.nextInt();
+        if(l.contains(p)){
+            if(isPrime(p)){
+                System.out.println("it is strobogrammatic prime number");
+            }
+        }
+        
+        else{
+            System.out.println("NO IT IS NOT STOBOGRAMMATIC PRIME NUMBER");
+        }
+         System.out.println("List of all prime strobogrammatic numbers of length n are");
+        for(int i=0;i<l.size();i++){
+            Integer number=Integer.parseInt(l.get(i));
+            if(isPrime(number)){
+                System.out.print(l.get(i)+" ");
+            }
+        }
     }
 }
